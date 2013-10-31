@@ -36,3 +36,6 @@ default['nodejs']['check_sha'] = true
 
 # Set this to true to install the legacy packages (0.8.x) from ubuntu/debian repositories; default is false (using the latest stable 0.10.x)
 default['nodejs']['legacy_packages'] = false
+
+# If installing from packages, set attributes here to install specific versions. legacy packages have separate nodejs and npm packages, current just has nodejs.
+default['nodejs']['package_versions'] = {}

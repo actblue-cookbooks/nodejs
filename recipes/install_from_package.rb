@@ -48,5 +48,7 @@ case node['platform_family']
 end
 
 packages.each do |node_pkg|
-  package node_pkg
+  package node_pkg do
+    version node['nodejs']['package_versions'][node_pkg]
+  end
 end

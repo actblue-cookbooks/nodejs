@@ -31,6 +31,7 @@ ATTRIBUTES
 * nodejs['npm'] - version of npm to install
 * nodejs['npm_src_url'] - download location for npm source tarball
 * nodejs['check_sha'] - test for valid sha_sum, default: true
+* nodejs['package_versions'] - distro versions of packages to install
 
 USAGE
 =====
