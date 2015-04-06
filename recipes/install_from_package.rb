@@ -26,7 +26,7 @@ case node['platform_family']
       repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
       packages = %w{ nodejs npm }
     else
-      repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      repo = 'http://deb.nodesource.com/node'
       packages = %w{ nodejs }
     end
     apt_repository 'node.js' do
