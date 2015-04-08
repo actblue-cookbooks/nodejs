@@ -24,17 +24,21 @@ case node['platform_family']
   when 'debian'
     if node['nodejs']['legacy_packages'] == true
       repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
+      repo_key = 'C7917B12'
+      repo_keyserver 'keyserver.ubuntu.com'
       packages = %w{ nodejs npm }
     else
       repo = 'http://deb.nodesource.com/node'
+      repo_key = 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+      repo_keyserver = nil
       packages = %w{ nodejs }
     end
     apt_repository 'node.js' do
       uri repo
       distribution node['lsb']['codename']
       components ['main']
-      keyserver "keyserver.ubuntu.com"
-      key "C7917B12"
+      key repo_key
+      keyserver repo_keyserver if repo_keyserver
       action :add
     end
   when 'rhel'
