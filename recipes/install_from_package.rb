@@ -28,7 +28,7 @@ case node['platform_family']
       repo_keyserver 'keyserver.ubuntu.com'
       packages = %w{ nodejs npm }
     else
-      repo = 'http://deb.nodesource.com/node'
+      repo = 'https://deb.nodesource.com/node'
       repo_key = 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
       repo_keyserver = nil
       packages = %w{ nodejs }
