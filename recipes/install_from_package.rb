@@ -22,25 +22,14 @@
 
 case node['platform_family']
   when 'debian'
-    if node['nodejs']['legacy_packages'] == true
-      repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
-      repo_key = 'C7917B12'
-      repo_keyserver 'keyserver.ubuntu.com'
-      packages = %w{ nodejs npm }
-    else
-      repo = 'https://deb.nodesource.com/node'
-      repo_key = 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
-      repo_keyserver = nil
-      packages = %w{ nodejs }
-    end
     apt_repository 'node.js' do
-      uri repo
+      uri "https://deb.nodesource.com/node_#{node['nodejs']['major_version']}"
       distribution node['lsb']['codename']
       components ['main']
-      key repo_key
-      keyserver repo_keyserver if repo_keyserver
+      key 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
       action :add
     end
+    packages = %w{ nodejs }
   when 'rhel'
     include_recipe 'yum::epel'
     packages = %w{ nodejs nodejs-devel npm }

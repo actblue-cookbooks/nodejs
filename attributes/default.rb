@@ -24,6 +24,10 @@ case node['platform_family']
     default['nodejs']['install_method'] = 'source'
 end
 
+# Used to select a nodesource apt repo for installing from packages
+default['nodejs']['major_version'] = '4.x'
+
+# Used for installing binaries (very out of date, do not use)
 default['nodejs']['version'] = '0.10.15'
 default['nodejs']['checksum'] = '87345ab3b96aa02c5250d7b5ae1d80e620e8ae2a7f509f7fa18c4aaa340953e8'
 default['nodejs']['checksum_linux_x64'] = '0b5191748a91b1c49947fef6b143f3e5e5633c9381a31aaa467e7c80efafb6e9'
@@ -33,9 +37,6 @@ default['nodejs']['npm'] = '1.3.5'
 default['nodejs']['src_url'] = "http://nodejs.org/dist"
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 default['nodejs']['check_sha'] = true
-
-# Set this to true to install the legacy packages (0.8.x) from ubuntu/debian repositories; default is false (using the latest stable 0.10.x)
-default['nodejs']['legacy_packages'] = false
 
 # If installing from packages, set attributes here to install specific versions. legacy packages have separate nodejs and npm packages, current just has nodejs.
 default['nodejs']['package_versions'] = {}
