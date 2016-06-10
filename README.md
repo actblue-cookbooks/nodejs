@@ -11,8 +11,7 @@ REQUIREMENTS
 
 ## Platform
 
-* Tested on Debian 6 and Ubuntu 10.04
-* Should work fine on Centos, RHEL, etc.
+* Tested on Debian 8 and Ubuntu 14.04
 
 ## Cookbooks:
 
@@ -24,7 +23,7 @@ Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 ATTRIBUTES
 ==========
 
-* nodejs['install_method'] = source or package
+* nodejs['install_method'] = package (source and binary have been removed)
 * nodejs['version'] - release version of node to install
 * nodejs['src_url'] - download location for node source tarball
 * nodejs['dir'] - location where node will be installed, default /usr/local
@@ -40,24 +39,9 @@ Include the nodejs recipe to install node on your system based on the default in
 
 *  include_recipe "nodejs"
 
-Include the install_from_source recipe to install node from sources:
-
-*  include_recipe "nodejs::install_from_source"
-
 Include the install_from_package recipe to install node from packages:
-Note that only apt (Ubuntu, Debian) appears to have up to date packages available.
-Centos, RHEL, etc are non-functional. (Try install_from_binary for those)
 
 *  include_recipe "nodejs::install_from_package"
-
-Include the install_from_binary recipe to install node from official prebuilt binaries:
-(Currently Linux x86, x86_64, armv6l only)
-
-*  include_recipe "nodejs::install_from_binary"
-
-Include the npm recipe to install npm:
-
-*  include_recipe "nodejs::npm"
 
 LICENSE and AUTHOR
 ==================

@@ -18,14 +18,6 @@ platforms:
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-10.04.box
   run_list:
   - recipe[apt]
-- name: centos-6.3
-  driver_config:
-    box: opscode-centos-6.3
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-6.3.box
-- name: centos-5.8
-  driver_config:
-    box: opscode-centos-5.8
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-5.8.box
 suites:
 - name: package
   run_list:
@@ -33,16 +25,3 @@ suites:
   attributes:
     nodejs:
       install_method: package
-- name: binary
-  run_list:
-  - recipe[nodejs]
-  attributes:
-    nodejs:
-      install_method: binary
-- name: source
-  run_list:
-  - recipe[nodejs]
-  - recipe[nodejs::npm]
-  attributes:
-    nodejs:
-      install_method: source
